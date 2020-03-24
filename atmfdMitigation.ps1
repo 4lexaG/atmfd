@@ -1,4 +1,6 @@
-﻿param([switch]$Elevated)
+
+#Setting full privileges
+param([switch]$Elevated)
 
 function Test-Admin {
   $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -16,14 +18,16 @@ if ((Test-Admin) -eq $false)  {
 
 exit
 }
-
 'running with full privileges'
+
+#Stopping service
 Stop-Service WebClient
 'service is stopped'
+
+#Renaming files
 $Thisfiles=(Get-Childitem –Path C:\ -Recurse | where {$_.Name -eq "atmfd.dll"}).fullname
   
-   foreach ($file in $Thisfiles) {
-    
-    Rename-Item -Path $file -NewName "adv200006.dll"
+foreach ($file in $Thisfiles) {    
+  Rename-Item -Path $file -NewName "adv200006.dll"
 }
 'the library has been renamed'
