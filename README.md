@@ -1,5 +1,5 @@
 # atmfd
-Type 1 Font Parsing Remote Code Execution Vulnerability | Mitigation
+Type 1 Font Parsing Remote Code Execution Vulnerability Mitigation
 
 A vulnerability has recently been released in the Adobe Type Manager Library, which allows an attacker to run code with kernel permissions if the victim opens a file or in Windows font preview.
 There are three ways to mitigate the problem, but they are highly system dependent. 
